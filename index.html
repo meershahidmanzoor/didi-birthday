@@ -2,159 +2,211 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Happy Birthday 🎉</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
+      font-family: "Inter", sans-serif;
     }
 
     body {
-      height: 100vh;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 20% 20%, #ff6ec4, transparent 40%),
+        radial-gradient(circle at 80% 30%, #7873f5, transparent 45%),
+        radial-gradient(circle at 50% 80%, #42e695, transparent 45%),
+        #0f0f1a;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
       color: #fff;
+      padding: 20px;
     }
 
-    .card {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      padding: 40px 30px;
-      border-radius: 20px;
-      text-align: center;
-      max-width: 420px;
-      width: 90%;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-      animation: fadeIn 1.2s ease;
+    .container {
+      max-width: 480px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 40px 30px 35px;
+      backdrop-filter: blur(18px);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .container::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.08),
+        transparent
+      );
+      opacity: 0.5;
+      pointer-events: none;
     }
 
     h1 {
       font-size: 2.4rem;
-      margin-bottom: 10px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
     }
 
     h2 {
-      font-size: 1.3rem;
-      margin-bottom: 25px;
-      font-weight: 300;
+      font-size: 1.15rem;
+      font-weight: 400;
+      opacity: 0.85;
+      margin-bottom: 28px;
+    }
+
+    .divider {
+      height: 1px;
+      width: 100%;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
+      margin-bottom: 28px;
     }
 
     /* Carousel */
     .carousel {
-      position: relative;
-      height: 120px;
       overflow: hidden;
+      position: relative;
+      height: 140px;
+      margin-bottom: 25px;
     }
 
     .slides {
       display: flex;
-      transition: transform 0.8s ease-in-out;
+      transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .slide {
       min-width: 100%;
-      padding: 0 10px;
-      font-size: 1.1rem;
-      line-height: 1.6;
+      padding: 0 6px;
+      font-size: 1.05rem;
+      line-height: 1.65;
+      text-align: center;
+      opacity: 0.95;
+    }
+
+    /* Progress dots */
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 30px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .dot.active {
+      background: #fff;
+      transform: scale(1.3);
     }
 
     .signature {
-      margin-top: 30px;
+      text-align: center;
+      font-size: 0.95rem;
+      opacity: 0.85;
       font-style: italic;
-      opacity: 0.9;
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .signature span {
+      display: block;
+      margin-top: 6px;
+      font-size: 0.85rem;
+      opacity: 0.7;
     }
 
-    /* Floating hearts */
-    .heart {
+    /* Subtle ambient animation */
+    .ambient {
       position: absolute;
-      color: rgba(255, 255, 255, 0.85);
-      font-size: 18px;
-      animation: floatUp 6s linear infinite;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(255,255,255,0.12), transparent 70%);
+      top: -60px;
+      right: -60px;
+      animation: float 10s ease-in-out infinite;
+      pointer-events: none;
     }
 
-    @keyframes floatUp {
-      from {
-        transform: translateY(100vh) scale(0.8);
-        opacity: 1;
-      }
-      to {
-        transform: translateY(-10vh) scale(1.2);
-        opacity: 0;
-      }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(25px); }
     }
   </style>
 </head>
 
 <body>
-  <div class="card">
+  <div class="container">
+    <div class="ambient"></div>
+
     <h1>Happy Birthday 🎂</h1>
-    <h2>Dear Sister 💖</h2>
+    <h2>To my amazing sister 💜</h2>
+
+    <div class="divider"></div>
 
     <div class="carousel">
       <div class="slides" id="slides">
-        <div class="slide">
-          You are not just my sister, you’re my forever best friend 💕
-        </div>
-        <div class="slide">
-          May your life be filled with love, success, and endless smiles ✨
-        </div>
-        <div class="slide">
-          Thank you for being strong, kind, and incredibly inspiring 🌸
-        </div>
-        <div class="slide">
-          Never stop dreaming — the world is better with you in it 🌍
-        </div>
+        <div class="slide">You don’t just light up rooms — you change the atmosphere ✨</div>
+        <div class="slide">Your kindness is quiet, powerful, and unforgettable 🌷</div>
+        <div class="slide">Life feels easier knowing you’re always there 💫</div>
+        <div class="slide">You grow stronger, wiser, and more beautiful every year 🌸</div>
+        <div class="slide">Your laughter is still my favorite sound 💖</div>
+        <div class="slide">Never doubt your worth — you matter deeply 🌍</div>
+        <div class="slide">The world is brighter simply because you exist 🌈</div>
+        <div class="slide">Today is about you — and you deserve all of it 🎉</div>
       </div>
     </div>
 
+    <div class="dots" id="dots"></div>
+
     <div class="signature">
-      — With love,<br />
-      Your Brother ❤️
+      With all my love,
+      <span>Your Brother ❤️</span>
     </div>
   </div>
 
   <script>
-    // Carousel logic
+    "use strict";
+
     const slides = document.getElementById("slides");
-    const totalSlides = slides.children.length;
+    const total = slides.children.length;
+    const dotsContainer = document.getElementById("dots");
     let index = 0;
 
-    setInterval(() => {
-      index = (index + 1) % totalSlides;
-      slides.style.transform = `translateX(-${index * 100}%)`;
-    }, 3500);
-
-    // Floating hearts
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.innerHTML = "❤";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = 4 + Math.random() * 3 + "s";
-      document.body.appendChild(heart);
-
-      setTimeout(() => heart.remove(), 7000);
+    // Create dots
+    for (let i = 0; i < total; i++) {
+      const dot = document.createElement("div");
+      dot.classList.add("dot");
+      if (i === 0) dot.classList.add("active");
+      dotsContainer.appendChild(dot);
     }
 
-    setInterval(createHeart, 300);
+    const dots = dotsContainer.children;
+
+    setInterval(() => {
+      index = (index + 1) % total;
+      slides.style.transform = `translateX(-${index * 100}%)`;
+
+      [...dots].forEach(d => d.classList.remove("active"));
+      dots[index].classList.add("active");
+    }, 3500);
   </script>
 </body>
 </html>
